@@ -1,15 +1,16 @@
 package com.example.tank;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
-public class Tank {
+public class Bullet {
+  private static final int SPFED = 10;
+  private static int WIDEH = 20, HEIGHT = 20;
+
   private int x, y;
-  private Dir dir = Dir.DOWN;
-  private static final int SPFED = 5;
+  private Dir dir;
 
-  private boolean moving = false;
-
-  public Tank(int x, int y, Dir dir) {
+  public Bullet(int x, int y, Dir dir) {
     this.x = x;
     this.y = y;
     this.dir = dir;
@@ -39,21 +40,15 @@ public class Tank {
     this.dir = dir;
   }
 
-  public boolean isMoving() {
-    return moving;
-  }
-
-  public void setMoving(boolean moving) {
-    this.moving = moving;
-  }
-
   public void paint(Graphics g) {
-    g.fillRect(x, y,50,50);
+    Color c = g.getColor();
+    g.setColor(Color.RED);
+    g.fillOval(x, y, WIDEH, HEIGHT);
+    g.setColor(c);
     move();
   }
 
   private void move() {
-    if (!moving) return;
     switch (dir) {
       case LEFT:
         x -= SPFED;break;
