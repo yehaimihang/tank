@@ -7,6 +7,8 @@ public class Tank {
   private Dir dir = Dir.DOWN;
   private static final int SPFED = 10;
 
+  private boolean moving = false;
+
   public Tank(int x, int y, Dir dir) {
     this.x = x;
     this.y = y;
@@ -37,8 +39,21 @@ public class Tank {
     this.dir = dir;
   }
 
+  public boolean isMoving() {
+    return moving;
+  }
+
+  public void setMoving(boolean moving) {
+    this.moving = moving;
+  }
+
   public void paint(Graphics g) {
     g.fillRect(x, y,50,50);
+    move();
+  }
+
+  private void move() {
+    if (!moving) return;
     switch (dir) {
       case LEFT:
         x -= SPFED;break;
