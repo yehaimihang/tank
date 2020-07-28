@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Bullet {
-  private static final int SPFED = 10;
+  private static final int SPFED = 8;
   private static int WIDEH = 20, HEIGHT = 20;
 
   private int x, y;
